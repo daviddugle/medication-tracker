@@ -30,16 +30,15 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   
-    Medications.associate = function(models) {
-      // An Order should belong to an Employee
-      // An Order cant be created without an Employee due to the foreign key constraint
-      Medications.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
+    // Medications.associate = function(models) {
+     
+    //   Medications.belongsTo(models.User, {
+    //     foreignKey: {
+    //       allowNull: false
+    //     }
+    //   });
+    // };
   
-    return Medicaitons;
+    return Medications;
   };
   

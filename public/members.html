@@ -11,20 +11,44 @@
 
 <body>
   <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/logout">
+          Logout
+        </a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h2>Welcome <span class="member-name"></span></h2>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12 currentMed">
+        <h2>Current Medications</h2>
+        <table id="meds">
+          <thread>
+            <tr>
+              <th class="col-md-3">Medication Name</th>
+              <th class="col-md-3">Time of Day</th>
+              <th class="col-md-3">Dosage</th>
+              <th class="col-md-3">Description</th>
+            </tr>
+          </thread>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 notes">
+        <h2>Notes:</h2>
+        <div id="notes"></div>
+      </div>
+    </div>
+
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
