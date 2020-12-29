@@ -1,0 +1,30 @@
+{
+  "name": "medication-tracker",
+  "version": "1.0.0",
+  "description": "My Wife's parents are struggling with Alzheimer's and keeping their medications correct. My wife and her sister split the trips to the Dr visits and current medications area always a topic of discussion. I want to build a site that keeps track of their meds in a database and reminds them to take their medications.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daviddugle/medication-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daviddugle/medication-tracker/issues"
+  },
+  "homepage": "https://github.com/daviddugle/medication-tracker#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.3.5"
+  }
+}
