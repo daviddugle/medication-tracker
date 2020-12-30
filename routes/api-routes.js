@@ -1,13 +1,14 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
+    return res.sendStatus(200);
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -25,7 +26,34 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-
+  // let's post the notes and medications
+  app.post("/api/notes", (req, res) => {
+    if (req.user) {
+      db.Notes.create({
+        note: req.body.newNote,
+        UserId: req.user.id
+      }).then(() => {
+        return res.sendStatus(200);
+      });
+    } else {
+      res.sendStatus(403);
+    }
+  });
+  app.post("/api/medications", (req, res) => {
+    if (req.user) {
+      db.Medications.create({
+        medicationName: req.body.medName,
+        timeOfDay: req.body.medTime,
+        dosage: req.body.medDose,
+        description: req.body.medDesc,
+        UserId: req.user.id
+      }).then(() => {
+        return res.sendStatus(200);
+      });
+    } else {
+      res.sendStatus(403);
+    }
+  });
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
@@ -45,5 +73,10 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  });
+  app.get("/api/user_data", isAuthenticated, (req, res) => {
+    if (req.user) {
+      res.render("members");
+    } 
   });
 };
