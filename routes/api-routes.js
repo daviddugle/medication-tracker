@@ -54,6 +54,32 @@ module.exports = function(app) {
       res.sendStatus(403);
     }
   });
+  // time for some get routes
+  app.get("/api/notes", (req, res) => {
+    if (req.user) {
+      const userId = req.user.id;
+      db.Notes.findAll({
+        where: {
+          UserId: userId
+        }
+      }).then(results => res.json(results));
+    } else {
+      res.sendStatus(403);
+    }
+  });
+  app.get("/api/medications", (req, res) => {
+    if (req.user) {
+      const userId = req.user.id;
+      db.Medicaitons.findAll({
+        where: {
+          UserId: userId
+        }
+      }).then(results => res.json(results));
+    } else {
+      res.sendStatus(403);
+    }
+  });
+
   // let's set some put routes so we can edit the items
   app.put("/api/notes", function(req, res) {
     console.log(req.body);
@@ -75,6 +101,7 @@ module.exports = function(app) {
       res.json(dbOrder);
     });
   });
+
 
 
 
