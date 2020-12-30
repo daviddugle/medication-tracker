@@ -30,7 +30,7 @@ module.exports = function(app) {
   app.post("/api/notes", (req, res) => {
     if (req.user) {
       db.Notes.create({
-        note: req.body.newNote,
+        note: req.body.note,
         UserId: req.user.id
       }).then(() => {
         return res.sendStatus(200);
@@ -42,10 +42,10 @@ module.exports = function(app) {
   app.post("/api/medications", (req, res) => {
     if (req.user) {
       db.Medications.create({
-        medicationName: req.body.medName,
-        timeOfDay: req.body.medTime,
-        dosage: req.body.medDose,
-        description: req.body.medDesc,
+        medicationName: req.body.medicationName,
+        timeOfDay: req.body.timeOfDay,
+        dosage: req.body.dosage,
+        description: req.body.description,
         UserId: req.user.id
       }).then(() => {
         return res.sendStatus(200);
