@@ -27,6 +27,7 @@ $("#noteSave").on("click", function(event){
   const newNoteData = {
     note: $("#newNote").val()
   };
+  console.log(newNoteData);
   createNotes(newNoteData);
   $("#noteModal").modal("hide");
 })
