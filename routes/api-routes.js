@@ -54,6 +54,30 @@ module.exports = function(app) {
       res.sendStatus(403);
     }
   });
+  // let's set some put routes so we can edit the items
+  app.put("/api/notes", function(req, res) {
+    console.log(req.body);
+    db.Notes.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbOrder) {
+      res.json(dbOrder);
+    });
+  });
+  app.put("/api/medications", function(req, res) {
+    console.log(req.body);
+    db.Medications.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbOrder) {
+      res.json(dbOrder);
+    });
+  });
+
+
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
