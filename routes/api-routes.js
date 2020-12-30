@@ -87,8 +87,8 @@ module.exports = function(app) {
       where: {
         id: req.body.id
       }
-    }).then(function(dbOrder) {
-      res.json(dbOrder);
+    }).then(function(dbNotes) {
+      res.json(dbNotes);
     });
   });
   app.put("/api/medications", function(req, res) {
@@ -97,12 +97,29 @@ module.exports = function(app) {
       where: {
         id: req.body.id
       }
-    }).then(function(dbOrder) {
-      res.json(dbOrder);
+    }).then(function(dbMedications) {
+      res.json(dbMedications);
     });
   });
-
-
+  // delete routes
+  app.delete("/api/notes/:id", function(req, res) {
+    db.Notes.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbNotes) {
+      res.json(dbNotes);
+    });
+  });
+  app.delete("/api/medications/:id", function(req, res) {
+    db.Medications.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbMedications) {
+      res.json(dbMedications);
+    });
+  });
 
 
   // Route for logging user out
