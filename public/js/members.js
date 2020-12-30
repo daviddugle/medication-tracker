@@ -20,7 +20,49 @@ $("#medAdd").on("click", function(){
   $("#medModal").modal("show");
 
 });
+$("#noteClose").on("click", function(){
+  $("#noteModal").modal("hide");
+});
+$("#medClose").on("click", function(){
+  $("#medModal").modal("hide");
+});
+$("#noteSave").on("click", function(event){
+  event.preventDefault();
+  const newNoteData = {
+    note: $("#newNote").val()
+  };
+  createNotes(newNoteData);
+  $("#noteModal").modal("hide");
+})
+function createNotes(newNoteData){
+  $.post("/api/notes", newNoteData).then(res =>{
+    if(res === "ok"){
+      location.reload();
+    }
+  })
+}
+$("#medSave").on("click", function(event){
+  event.preventDefault();
+  const newMedData = {
+    medicationName: $("#medName").val(),
+    timeOfDay: $("medTime").val(),
+    dosage: $("medDose").val(),
+    description: $("medDesc").val(),
+  };
+  createMed(newMedData);
+  $("#medModal").modal("hide");
+})
+function createMed(newMedData){
+  $.post("/api/medications", newMedData).then(res =>{
+    if(res === "ok"){
+      location.reload();
+    }
+  })
+}
 
 
 })
-
+// $.get("/api/user_data").then(data => {
+//   $(".member-name").text(data.email);
+//   $(".member-name").text(data.password);
+// });

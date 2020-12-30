@@ -30,14 +30,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   
-    // Medications.associate = function(models) {
+    Medications.associate = function(models) {
      
-    //   Medications.belongsTo(models.User, {
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    //   });
-    // };
+      Medications.belongsTo(models.User, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };
   
     return Medications;
   };
