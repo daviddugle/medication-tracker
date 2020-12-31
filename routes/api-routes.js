@@ -79,6 +79,20 @@ module.exports = function(app) {
       res.sendStatus(403);
     }
   });
+  app.get("/api/user_medications", (req, res) => {
+    db.User.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(() => res.sendStatus(200));
+  });
+  app.get("/api/user_notes", (req, res) => {
+    db.User.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(() => res.sendStatus(200));
+  });
 
   // let's set some put routes so we can edit the items
   app.put("/api/notes", function(req, res) {
