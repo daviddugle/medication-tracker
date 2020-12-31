@@ -79,6 +79,7 @@ module.exports = function(app) {
       res.sendStatus(403);
     }
   });
+  // this should render the proper medications for the user selected
   app.get("/api/user_medications", (req, res) => {
     db.User.findAll({
       where: {
@@ -86,6 +87,7 @@ module.exports = function(app) {
       }
     }).then(() => res.sendStatus(200));
   });
+  // this should render the proper notes for the user selected
   app.get("/api/user_notes", (req, res) => {
     db.User.findAll({
       where: {
