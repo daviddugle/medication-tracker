@@ -41,11 +41,12 @@ function createNotes(newNoteData){
 $("#medSave").on("click", function(event){
   event.preventDefault();
   const newMedData = {
-    medicationName: $("#medName").val(),
-    timeOfDay: $("medTime").val(),
-    dosage: $("medDose").val(),
-    description: $("medDesc").val(),
+    medicationName: $("#medicationName").val(),
+    timeOfDay: $("#timeOfDay").val(),
+    dosage: $("#dosage").val(),
+    description: $("#description").val(),
   };
+  console.log(newMedData);
   createMed(newMedData);
   $("#medModal").modal("hide");
 })

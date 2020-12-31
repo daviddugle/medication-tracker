@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     const Medications = sequelize.define("Medications", {
-      medicaitonName: {
+      medicationName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {          

@@ -70,7 +70,7 @@ module.exports = function(app) {
   app.get("/api/medications", (req, res) => {
     if (req.user) {
       const userId = req.user.id;
-      db.Medicaitons.findAll({
+      db.Medications.findAll({
         where: {
           UserId: userId
         }
