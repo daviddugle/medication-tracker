@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Binford Care</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+  <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/logout">
+          Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- modal for notes -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="modal fade" id="noteModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5>New Note</h5>
+                <!-- <button class="close" type="button" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span></button> -->
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="note" class="col-form-label">Note:</label>
+                    <textarea id="newNote" type="note" onfocus="this.value=''" name="newNote" cols="30" rows="10" class="form-control"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" id="noteClose" type="button" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" id="noteSave" type="button">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- modal for Medications -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="modal fade" id="medModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5>New Medication</h5>
+                <!-- <button class="close" type="button" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span></button> -->
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="note" class="col-form-label">Medication Name:</label>
+                    <textarea id="medicationName" onfocus="this.value=''" name="medicationName" type="medicationName" cols="30" rows="1" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="note" class="col-form-label">Time of Day:</label>
+                    <textarea id="timeOfDay" onfocus="this.value=''" name="timeOfDay" type="timeOfDay" cols="30" rows="1" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="note" class="col-form-label">Dosage:</label>
+                    <textarea id="dosage" onfocus="this.value=''" name="dosage" type="dosage" cols="30" rows="1" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="note" class="col-form-label">Description:</label>
+                    <textarea id="description" onfocus="this.value=''" name="description" type="description" cols="30" rows="1" class="form-control"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" id="medClose" type="button" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" id="medSave" type="button">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Welcome <span class="member-name"></span></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 currentMed">
+        <h2>Current Medications</h2>
+        <button class="btn btn-primary" id="medAdd" type="button">Add Medication</button>
+        <table id="meds">
+          <thread>
+            <tr>
+              <th class="col-md-3">Medication Name</th>
+              <th class="col-md-3">Time of Day</th>
+              <th class="col-md-3">Dosage</th>
+              <th class="col-md-3">Description</th>
+            </tr>
+          </thread>
+          <tbody>
+            <tr id="rowData"></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 notes">
+        <h2>Notes:</h2>
+        <button class="btn btn-primary" id="noteAdd" type="button">New Note</button>        
+        <div id="notes"></div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+  <script src="http://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/members.js"></script>
+
+</body>
+
+</html>
