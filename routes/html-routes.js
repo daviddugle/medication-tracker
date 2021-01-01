@@ -30,7 +30,7 @@ module.exports = function(app) {
 
   app.get("/member", isAuthenticated, (req, res) => {
     if (req.user) {
-     return res.render("/members");
+     return res.render("members");
     }
 
   });
