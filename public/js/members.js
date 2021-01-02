@@ -78,11 +78,16 @@ $(document).ready(function () {
       let time = $("<td>").text(medTime);
       let dose = $("<td>").text(medDose);
       let desc = $("<td>").text(medDesc);
+      let edTd =$("<td>");
+      let delTd =$("<td>");
 
       let editBut = $("<button>").text("Edit").attr("id", "editButton");
-      let deleteBut = $("<button>").text("Delete").attr("id", "deleteButton");      
+      let deleteBut = $("<button>").text("Delete").attr("id", "deleteButton");
+      
+      edTd.append(editBut);
+      delTd.append(deleteBut);
 
-      row.append(name,time,dose,desc,editBut,deleteBut);
+      row.append(name,time,dose,desc,edTd,delTd);
       $("#medData").append(row);
     }
   }
@@ -98,6 +103,10 @@ $(document).ready(function () {
       const noteDesc = notes[i].note;
       
       let noteDiv = $("<div>").text(noteDesc).attr("id","noteDiv");
+      let edNote =$("<button>").text("Edit").attr("id", "editNote");
+      let delNote =$("<button>").text("Delete").attr("id", "deleteNote");
+      noteDiv.append(edNote,delNote);
+
       $("#notes").append(noteDiv);
     }
   }
