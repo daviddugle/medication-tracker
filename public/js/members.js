@@ -3,6 +3,23 @@ $(document).ready(function () {
   // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email);
+    if (data.email==="medTest2@test.com"){
+      
+      let imgDisp = $("<img>").attr({src: "/assets/Dianne.jpg",class: "dispPhoto"});
+      $("#photo").append(imgDisp);
+
+    }
+    else if (data.email==="medTest1@test.com"){
+      console.log("match");
+      let imgDisp = $("<img>").attr({src: "/assets/Charles.jpg",class: "dispPhoto"});
+      $("#photo").append(imgDisp);
+
+    }
+
+
+
+
+
   });
   // });
 
@@ -62,15 +79,15 @@ $(document).ready(function () {
 
   const medList = async () => {
     const medications = await $.get("/api/medications");
-    console.log(medications);
+
 
     for (let i = 0; i < medications.length; i++) {
-      console.log(medications[i]);
+
 
       const medName = medications[i].medicationName;
       const medTime = medications[i].timeOfDay;
       const medDose = medications[i].dosage;
-      const medDesc = medications[i].description;      
+      const medDesc = medications[i].description;
 
       let row = $("<tr>");
 
@@ -78,16 +95,16 @@ $(document).ready(function () {
       let time = $("<td>").text(medTime);
       let dose = $("<td>").text(medDose);
       let desc = $("<td>").text(medDesc);
-      let edTd =$("<td>");
-      let delTd =$("<td>");
+      // let edTd = $("<td>");
+      // let delTd = $("<td>");
 
-      let editBut = $("<button>").text("Edit").attr("id", "editButton");
-      let deleteBut = $("<button>").text("Delete").attr("id", "deleteButton");
-      
-      edTd.append(editBut);
-      delTd.append(deleteBut);
+      let editBut = $("<button>").text("Edit/Delete").attr({id: "edDelBut", type: "button", class: "btn btn-primary"});
+      // let deleteBut = $("<button>").text("Delete").attr("id", "deleteButton");
 
-      row.append(name,time,dose,desc,edTd,delTd);
+      // edTd.append(editBut);
+      // delTd.append(deleteBut);
+
+      row.append(name, time, dose, desc, editBut);
       $("#medData").append(row);
     }
   }
@@ -95,26 +112,47 @@ $(document).ready(function () {
 
   const noteList = async () => {
     const notes = await $.get("/api/notes");
-    console.log(notes);
+
 
     for (let i = 0; i < notes.length; i++) {
-      console.log(notes[i]);
+
 
       const noteDesc = notes[i].note;
-      
-      let noteDiv = $("<div>").text(noteDesc).attr("id","noteDiv");
-      let edNote =$("<button>").text("Edit").attr("id", "editNote");
-      let delNote =$("<button>").text("Delete").attr("id", "deleteNote");
-      noteDiv.append(edNote,delNote);
+
+      let noteDiv = $("<div>").text(noteDesc).attr("id", "noteDiv");
+      let edNote = $("<button>").text("Edit").attr("id", "editNote");
+      let delNote = $("<button>").text("Delete").attr("id", "deleteNote")
+      .on("click",function(){
+        console.log("edit clicked")
+      });
+      noteDiv.append(edNote, delNote);
 
       $("#notes").append(noteDiv);
     }
   }
   noteList();
 
+// $("#edDelBut").on("click", function(){
+  
+//   console.log("clickness");
+// })
+
 
 
 });
+// $("#edDelBut").click(function () {
+//   console.log("Delete Clicked");
+  // var listItemData = $(this).parent("td").parent("tr").data("medications");
+  //   var id = listItemData.id;
+  //   $.ajax({
+  //     method: "DELETE",
+  //     url: "/api/medications/" + id
+  //   })
+  //     .then(noteList);
+
+// });
+
+
 // $.get("/api/user_data").then(data => {
 //   $(".member-name").text(data.email);
 //   $(".member-name").text(data.password);

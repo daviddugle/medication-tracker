@@ -1,15 +1,20 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
+    <div class="navbar-header ">
+      <a class="navbar-brand text-white" href="/logout">
         Logout
       </a>
-      <a href="https://www.walgreens.com/login.jsp?ru=/rx-refillhub/refillhub" target="_blank"
-        class="navbar-brand">Walgreens</a>
-      <a href="https://www.novanthealth.org/mynovant.aspx" target="_blank"
-        class="navbar-brand">Novant My Chart</a>
-        <a href="https://my.atriumhealth.org/MyAtriumHealth/Authentication/Login?" target="_blank"
-        class="navbar-brand">Atrium My Chart</a>
+      
+        
+          <a href="https://www.walgreens.com/login.jsp?ru=/rx-refillhub/refillhub" target="_blank"
+            class="navbar-brand text-white">Walgreens</a>
+          <a href="https://www.novanthealth.org/mynovant.aspx" target="_blank" class="navbar-brand text-white">Novant My
+            Chart</a>
+          <a href="https://my.atriumhealth.org/MyAtriumHealth/Authentication/Login?" target="_blank"
+            class="navbar-brand text-white">Atrium My Chart</a>
+        
+        
+      
 
     </div>
   </div>
@@ -99,14 +104,66 @@
   </div>
 </div>
 
+<!-- modal for Medications Edit-->
+
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h2>Welcome <span class="member-name"></span></h2>
+    <div class="col-md-12">
+
+      <div class="modal fade" id="medModalEdit">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5>Edit Medication</h5>
+              <!-- <button class="close" type="button" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span></button> -->
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="note" class="col-form-label">Medication Name:</label>
+                  <textarea id="medicationName" onfocus="this.value=''" name="medicationName" type="medicationName"
+                    cols="30" rows="1" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="note" class="col-form-label">Time of Day:</label>
+                  <textarea id="timeOfDay" onfocus="this.value=''" name="timeOfDay" type="timeOfDay" cols="30" rows="1"
+                    class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="note" class="col-form-label">Dosage:</label>
+                  <textarea id="dosage" onfocus="this.value=''" name="dosage" type="dosage" cols="30" rows="1"
+                    class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="note" class="col-form-label">Description:</label>
+                  <textarea id="description" onfocus="this.value=''" name="description" type="description" cols="30"
+                    rows="1" class="form-control"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" id="medClose" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" id="medEdit" type="button">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+</div>
+
+
+<div class="container">
+  <div class="row welcome mb-2">
+    <div class="col-md-6 col-md-offset-3 ">
+      <h2>Welcome <span class="member-name"></span></h2>
+    </div>
+    <div class="col-md-3" id="photo"></div>
+  </div>
   <div class="row">
-    <div class="col-md-12 currentMed">
+    <div class="col-md-12 currentMed mb-2">
       <h2>Current Medications</h2>
       <button class="btn btn-primary" id="medAdd" type="button">Add Medication</button>
       <table id="meds">
@@ -116,8 +173,8 @@
             <th class="col-md-2">Time of Day</th>
             <th class="col-md-2">Dosage</th>
             <th class="col-md-2">Description</th>
-            <th class="col-md-1">Edit</th>
-            <th class="col-md-1">Delete</th>
+            <th class="col-md-1">Edit/Delete</th>
+            {{!-- <th class="col-md-1">Delete</th> --}}
 
 
           </tr>

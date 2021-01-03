@@ -2,3 +2,38 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+body {
+  background-color: rgb(229,199,141);
+}
+.navbar{
+  background-color: rgb(46,104,120);
+  box-shadow: 2px 2px 4px #000000;
+ 
+}
+.currentMed{
+  background-color: rgb(131,186,166);
+  border-radius: 25px;
+  padding: 5px;
+  box-shadow: 2px 2px 4px #000000;
+}
+.notes{
+  background-color: rgb(93,134,144);
+  border-radius: 25px;
+  padding: 5px;
+  box-shadow: 2px 2px 4px #000000;
+}
+.loginForm{
+  background-color: rgb(131,186,166);
+  border-radius: 25px;
+  padding: 5px;
+  box-shadow: 2px 2px 4px #000000;
+}
+.dispPhoto{
+  width: 300px;
+}
+.welcome{
+  background-color: rgb(93,134,144);
+  border-radius: 25px;
+  padding: 5px;
+  box-shadow: 2px 2px 4px #000000;
+}
