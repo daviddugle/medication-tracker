@@ -3,15 +3,15 @@ $(document).ready(function () {
   // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email);
-    if (data.email==="medTest2@test.com"){
-      
-      let imgDisp = $("<img>").attr({src: "/assets/Dianne.jpg",class: "dispPhoto"});
+    if (data.email === "medTest2@test.com") {
+
+      let imgDisp = $("<img>").attr({ src: "/assets/Dianne.jpg", class: "dispPhoto" });
       $("#photo").append(imgDisp);
 
     }
-    else if (data.email==="medTest1@test.com"){
+    else if (data.email === "medTest1@test.com") {
       console.log("match");
-      let imgDisp = $("<img>").attr({src: "/assets/Charles.jpg",class: "dispPhoto"});
+      let imgDisp = $("<img>").attr({ src: "/assets/Charles.jpg", class: "dispPhoto" });
       $("#photo").append(imgDisp);
 
     }
@@ -98,13 +98,16 @@ $(document).ready(function () {
       // let edTd = $("<td>");
       // let delTd = $("<td>");
 
-      let editBut = $("<button>").text("Edit/Delete").attr({id: "edDelBut", type: "button", class: "btn btn-primary"});
+      let editBut = $("<button>").text("Edit/Delete").attr({ id: "edDelBut", type: "button", class: "btn btn-primary" });
       // let deleteBut = $("<button>").text("Delete").attr("id", "deleteButton");
 
       // edTd.append(editBut);
       // delTd.append(deleteBut);
 
       row.append(name, time, dose, desc, editBut);
+      row.attr("class", function () {
+        return "row-data";
+      })
       $("#medData").append(row);
     }
   }
@@ -120,35 +123,30 @@ $(document).ready(function () {
       const noteDesc = notes[i].note;
 
       let noteDiv = $("<div>").text(noteDesc).attr("id", "noteDiv");
-      let edNote = $("<button>").text("Edit").attr("id", "editNote");
-      let delNote = $("<button>").text("Delete").attr("id", "deleteNote")
-      .on("click",function(){
-        console.log("edit clicked")
-      });
-      noteDiv.append(edNote, delNote);
+      let edNote = $("<button>").text("Edit/Delete").attr({ id: "edDelNoteBut", type: "button", class: "btn btn-primary" });
+      noteDiv.append(edNote);
 
       $("#notes").append(noteDiv);
     }
   }
   noteList();
 
-// $("#edDelBut").on("click", function(){
-  
-//   console.log("clickness");
-// })
-$("body").on("click", "#edDelBut", function(event){
-  
-  const rowId = event.target.parentNode.parentNode.id;
-  console.log(rowId)
-  // const data = document.getElementById(rowId).querySelectorAll();
-  // console.log(data)
-  $("#medModalEdit").modal("show");
-  // $("#medicationName").val(data[1].innerHTML);
-  // $("#timeOfDay").val(data[2].innerHTML);
-  // $("#dosage").val(data[3].innerHTML);
-  // $("#description").val(data[4].innerHTML);
-  
-})
+  // $("#edDelBut").on("click", function(){
+
+  //   console.log("clickness");
+  // })
+  $("body").on("click", "#edDelBut", function (event) {
+    const rowId = event.target.parentNode.parentNode.id;
+    const data = document.getElementById(rowId).querySelectorAll(".row-data");
+    $("#medModalEdit").modal("show");
+    $("#medicationName").val(data[1].innerHTML);
+    $("#timeOfDay").val(data[2].innerHTML);
+    $("#dosage").val(data[3].innerHTML);
+    $("#description").val(data[4].innerHTML);
+  })
+  $("body").on("click", "#edDelNoteBut", function () {
+    $("#noteModalEdit").modal("show");
+  })
 
 
 });

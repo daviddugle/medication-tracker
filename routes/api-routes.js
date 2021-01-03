@@ -79,6 +79,24 @@ module.exports = function(app) {
       res.sendStatus(403);
     }
   });
+  app.get("/api/medications/:id", function(req, res) {
+    db.Medications.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbMedications) {
+      res.json(dbMedications);
+    });
+  });
+  app.get("/api/notes/:id", function(req, res) {
+    db.Notes.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbNotes) {
+      res.json(dbNotes);
+    });
+  });
   // // this should render the proper medications for the user selected
   // app.get("/api/user_medications", (req, res) => {
   //   db.User.findAll({

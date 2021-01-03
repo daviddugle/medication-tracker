@@ -4,17 +4,17 @@
       <a class="navbar-brand text-white" href="/logout">
         Logout
       </a>
-      
-        
-          <a href="https://www.walgreens.com/login.jsp?ru=/rx-refillhub/refillhub" target="_blank"
-            class="navbar-brand text-white">Walgreens</a>
-          <a href="https://www.novanthealth.org/mynovant.aspx" target="_blank" class="navbar-brand text-white">Novant My
-            Chart</a>
-          <a href="https://my.atriumhealth.org/MyAtriumHealth/Authentication/Login?" target="_blank"
-            class="navbar-brand text-white">Atrium My Chart</a>
-        
-        
-      
+
+
+      <a href="https://www.walgreens.com/login.jsp?ru=/rx-refillhub/refillhub" target="_blank"
+        class="navbar-brand text-white">Walgreens</a>
+      <a href="https://www.novanthealth.org/mynovant.aspx" target="_blank" class="navbar-brand text-white">Novant My
+        Chart</a>
+      <a href="https://my.atriumhealth.org/MyAtriumHealth/Authentication/Login?" target="_blank"
+        class="navbar-brand text-white">Atrium My Chart</a>
+
+
+
 
     </div>
   </div>
@@ -45,6 +45,42 @@
             <div class="modal-footer">
               <button class="btn btn-secondary" id="noteClose" type="button" data-dismiss="modal">Close</button>
               <button class="btn btn-primary" id="noteSave" type="button">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- modal for notes edits -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="modal fade" id="noteModalEdit">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5>Note Edit</h5>
+              <!-- <button class="close" type="button" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span></button> -->
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="note" class="col-form-label">Note:</label>
+                  <textarea id="newNote" type="note" onfocus="this.value=''" name="newNote" cols="30" rows="10"
+                    class="form-control"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" id="noteClose" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" id="noteSave" type="button">Save</button>
+              <button class="btn btn-danger" id="noteDelete" type="button">Delete</button>
+
             </div>
           </div>
         </div>
