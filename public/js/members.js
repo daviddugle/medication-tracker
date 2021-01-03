@@ -136,7 +136,19 @@ $(document).ready(function () {
   
 //   console.log("clickness");
 // })
-
+$("body").on("click", "#edDelBut", function(event){
+  
+  const rowId = event.target.parentNode.parentNode.id;
+  console.log(rowId)
+  // const data = document.getElementById(rowId).querySelectorAll();
+  // console.log(data)
+  $("#medModalEdit").modal("show");
+  // $("#medicationName").val(data[1].innerHTML);
+  // $("#timeOfDay").val(data[2].innerHTML);
+  // $("#dosage").val(data[3].innerHTML);
+  // $("#description").val(data[4].innerHTML);
+  
+})
 
 
 });
