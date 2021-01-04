@@ -53,6 +53,7 @@ $(document).ready(function () {
       if (res === "ok") {
         location.reload();
       }
+      location.reload();
     })
   }
   $("#medSave").on("click", function (event) {
@@ -66,6 +67,7 @@ $(document).ready(function () {
     console.log(newMedData);
     createMed(newMedData);
     $("#medModal").modal("hide");
+
   })
   function createMed(newMedData) {
     $.post("/api/medications", newMedData).then(res => {
@@ -73,6 +75,7 @@ $(document).ready(function () {
         location.reload();
         medList();
       }
+      location.reload();
     })
   }
 
@@ -144,8 +147,12 @@ $(document).ready(function () {
     $("#dosage").val(data[3].innerHTML);
     $("#description").val(data[4].innerHTML);
   })
-  $("body").on("click", "#edDelNoteBut", function () {
+  $("body").on("click", "#edDelNoteBut", function (event) {
     $("#noteModalEdit").modal("show");
+    // let selected = event.target.parentNode.parentNode.id;
+    // const data = document.getElementById(selected).querySelectorAll("id");
+    let data = event.target.parentNode.getAttribute("id");
+    console.log(data);
   })
 
 
