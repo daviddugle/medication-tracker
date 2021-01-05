@@ -80,11 +80,7 @@ module.exports = function(app) {
     }
   });
   app.get("/api/medications/:id", function(req, res) {
-    db.Medications.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbMedications) {
+    db.Medications.findByPk(req.params.id).then(function(dbMedications) {
       res.json(dbMedications);
     });
   });
@@ -145,7 +141,7 @@ module.exports = function(app) {
       res.json(dbNotes);
     });
   });
-  app.delete("/api/medications/:id", function(req, res) {
+  app.delete("/api/medications/:id", function (req, res) {
     db.Medications.destroy({
       where: {
         id: req.params.id

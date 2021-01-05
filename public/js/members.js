@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function (data) {
@@ -101,7 +102,8 @@ $(document).ready(function () {
       // let edTd = $("<td>");
       // let delTd = $("<td>");
 
-      let editBut = $("<button>").text("Edit/Delete").attr({ id: "edDelBut", type: "button", class: "btn btn-primary" });
+      let editBut = $("<button>").text("Edit/Delete").attr({ type: "button", class: " edDelBut btn btn-primary", "data-id": medications[i].id});
+
       // let deleteBut = $("<button>").text("Delete").attr("id", "deleteButton");
 
       // edTd.append(editBut);
@@ -138,7 +140,10 @@ $(document).ready(function () {
 
   //   console.log("clickness");
   // })
-  $("body").on("click", "#edDelBut", function (event) {
+  $("body").on("click", ".edDelBut", async function (event) {
+    const id = $(this).attr("data-id");
+    const bob = await $.get(`/api/medications/${id}`);
+    console.log(bob)
     const rowId = event.target.parentNode.parentNode.id;
     const data = document.getElementById(rowId).querySelectorAll(".row-data");
     $("#medModalEdit").modal("show");
