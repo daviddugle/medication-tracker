@@ -149,10 +149,11 @@ $(document).ready(function () {
   })
   $("body").on("click", "#edDelNoteBut", function (event) {
     $("#noteModalEdit").modal("show");
+    var id = $(this).data("id");
     // let selected = event.target.parentNode.parentNode.id;
     // const data = document.getElementById(selected).querySelectorAll("id");
-    let data = event.target.parentNode.getAttribute("id");
-    console.log(data);
+    // let data = event.target.parentNode.getAttribute("id");
+    console.log(id);
   })
 
 
