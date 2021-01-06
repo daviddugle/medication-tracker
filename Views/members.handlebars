@@ -64,22 +64,25 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5>Note Edit</h5>
-              <!-- <button class="close" type="button" data-dismiss="modal">
-                  <span aria-hidden="true">&times;</span></button> -->
             </div>
             <div class="modal-body">
               <form>
                 <div class="form-group">
+                  <label for="note" class="col-form-label">Id:</label>
+                  <textarea id="noteId" type="note"  name="noteId" cols="30" rows="1" readonly
+                    class="form-control"></textarea>
+                </div>
+                <div class="form-group">
                   <label for="note" class="col-form-label">Note:</label>
-                  <textarea id="newNote" type="note" onfocus="this.value=''" name="newNote" cols="30" rows="10"
+                  <textarea id="newNoteEd" type="note"  name="newNoteEd" cols="30" rows="10"
                     class="form-control"></textarea>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-secondary" id="noteClose" type="button" data-dismiss="modal">Close</button>
-              <button class="btn btn-primary" id="noteSave" type="button">Save</button>
-              <button class="btn btn-danger" id="noteDelete" type="button">Delete</button>
+              <button class="btn btn-secondary" id="noteCloseEd" type="button" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" id="noteSaveEd" type="button">Save</button>
+              <button class="btn btn-danger" id="noteDeleteEd" type="button">Delete</button>
 
             </div>
           </div>

@@ -85,31 +85,10 @@ module.exports = function(app) {
     });
   });
   app.get("/api/notes/:id", function(req, res) {
-    db.Notes.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbNotes) {
+    db.Notes.findByPk(req.params.id).then(function(dbNotes) {
       res.json(dbNotes);
     });
   });
-  // // this should render the proper medications for the user selected
-  // app.get("/api/user_medications", (req, res) => {
-  //   db.User.findAll({
-  //     where: {
-  //       UserId: req.user.id
-  //     }
-  //   }).then(() => res.sendStatus(200));
-  // });
-  // // this should render the proper notes for the user selected
-  // app.get("/api/user_notes", (req, res) => {
-  //   db.User.findAll({
-  //     where: {
-  //       UserId: req.user.id
-  //     }
-  //   }).then(() => res.sendStatus(200));
-  // });
-
   // let's set some put routes so we can edit the items
   app.put("/api/notes", function(req, res) {
     console.log(req.body);

@@ -128,7 +128,7 @@ $(document).ready(function () {
       const noteDesc = notes[i].note;
 
       let noteDiv = $("<div>").text(noteDesc).attr("id", "noteDiv");
-      let edNote = $("<button>").text("Edit/Delete").attr({ id: "edDelNoteBut", type: "button", class: "btn btn-primary" });
+      let edNote = $("<button>").text("Edit/Delete").attr({ type: "button", class: "btn btn-primary edDelNoteBut", "data-id": notes[i].id });
       noteDiv.append(edNote);
 
       $("#notes").append(noteDiv);
@@ -159,10 +159,39 @@ $(document).ready(function () {
       }
       updateMeds(editMedicationData)
     })
+    $("body").on("click", "#medClose", function(){      
+      $("#medModalEdit").modal("hide");     
+    })
+
+    $("body").on("click", "#medDelete", function(){
+      console.log("clicked");
+      const deleteMedicationData = {
+        id: $("#idEd").val(),
+        medicationName: $("#medicationNameEd").val(),
+        timeOfDay: $("#timeOfDayEd").val(),
+        dosage: $("#dosageEd").val(),
+        description: $("#descriptionEd").val()
+      }
+      console.log(deleteMedicationData);
+      deleteMeds(deleteMedicationData);
+    })
+
     
 
 
   })
+  // delete medications
+  function deleteMeds(deleteMedicationData){
+    $.ajax({
+      method: "DELETE",
+      url: "api/medications",
+      data: deleteMedicationData
+    }).then(function(){
+      location.reload();
+    })
+
+  }
+
   // update the meds function
   function updateMeds(editMedicationData){
     $.ajax({
@@ -175,15 +204,34 @@ $(document).ready(function () {
   }
 
 
-  $("body").on("click", "#edDelNoteBut", function (event) {
+  $("body").on("click", ".edDelNoteBut", async function (event) {
+    const id = $(this).attr("data-id");
+    const noteSel = await $.get(`/api/notes/${id}`);
     $("#noteModalEdit").modal("show");
-    var id = $(this).data("id");
-    // let selected = event.target.parentNode.parentNode.id;
-    // const data = document.getElementById(selected).querySelectorAll("id");
-    // let data = event.target.parentNode.getAttribute("id");
-    console.log(id);
-  })
+    console.log(noteSel);
+    $("#noteId").val(noteSel.id);
+    $("#newNoteEd").val(noteSel.note);
 
+    $("body").on("click", "#noteCloseEd", function(){      
+      $("#noteModalEdit").modal("hide");     
+    })
+    $("body").on("click", "#noteSaveEd", function(){      
+      const editNoteData = {
+        id: $("#noteId").val(),
+        note: $("#newNoteEd").val()
+      }    
+      updateNotes(editNoteData);
+    })
+  })
+  function updateNotes(editNoteData){
+    $.ajax({
+      method: "PUT",
+      url: "api/notes",
+      data:editNoteData
+    }).then(function(){
+      location.reload();
+    })
+  }
 
 });
 // $("#edDelBut").click(function () {
