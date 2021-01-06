@@ -136,22 +136,45 @@ $(document).ready(function () {
   }
   noteList();
 
-  // $("#edDelBut").on("click", function(){
-
-  //   console.log("clickness");
-  // })
+  // for editing a medication
   $("body").on("click", ".edDelBut", async function (event) {
     const id = $(this).attr("data-id");
-    const bob = await $.get(`/api/medications/${id}`);
-    console.log(bob)
-    const rowId = event.target.parentNode.parentNode.id;
-    const data = document.getElementById(rowId).querySelectorAll(".row-data");
+    const medSel = await $.get(`/api/medications/${id}`);
+      
     $("#medModalEdit").modal("show");
-    $("#medicationName").val(data[1].innerHTML);
-    $("#timeOfDay").val(data[2].innerHTML);
-    $("#dosage").val(data[3].innerHTML);
-    $("#description").val(data[4].innerHTML);
+    $("#idEd").val(medSel.id);
+    $("#medicationNameEd").val(medSel.medicationName);
+    $("#timeOfDayEd").val(medSel.timeOfDay);
+    $("#dosageEd").val(medSel.dosage);
+    $("#descriptionEd").val(medSel.description);
+
+    $("body").on("click", "#medEdit", function(){
+      console.log("clicked");
+      const editMedicationData = {
+        id: $("#idEd").val(),
+        medicationName: $("#medicationNameEd").val(),
+        timeOfDay: $("#timeOfDayEd").val(),
+        dosage: $("#dosageEd").val(),
+        description: $("#descriptionEd").val()
+      }
+      updateMeds(editMedicationData)
+    })
+    
+
+
   })
+  // update the meds function
+  function updateMeds(editMedicationData){
+    $.ajax({
+      method: "PUT",
+      url: "api/medications",
+      data: editMedicationData
+    }).then(function(){
+      location.reload();
+    })
+  }
+
+
   $("body").on("click", "#edDelNoteBut", function (event) {
     $("#noteModalEdit").modal("show");
     var id = $(this).data("id");
