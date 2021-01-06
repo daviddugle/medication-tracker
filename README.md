@@ -74,7 +74,17 @@ Once deployed you could just visit the website create a login and go to town. Ri
 
 ## Technologies Used
 
-* list your technologies used in the app
+* Bootstrap
+* Handlebars
+* mySQL
+* sequelize
+* Express
+* bcrypt
+* express-handlebars
+* passport
+* passport-local
+* heroku
+
 
 
 
