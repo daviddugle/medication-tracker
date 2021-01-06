@@ -184,8 +184,8 @@ $(document).ready(function () {
   function deleteMeds(deleteMedicationData){
     $.ajax({
       method: "DELETE",
-      url: "api/medications",
-      data: deleteMedicationData
+      url: "api/medications/" + deleteMedicationData.id
+      
     }).then(function(){
       location.reload();
     })
@@ -222,7 +222,27 @@ $(document).ready(function () {
       }    
       updateNotes(editNoteData);
     })
+    $("body").on("click", "#noteDeleteEd", function(){      
+      const deleteNoteData = {
+        id: $("#noteId").val(),
+        note: $("#newNoteEd").val()
+      }    
+      deleteNotes(deleteNoteData);
+    })
+
   })
+  function deleteNotes(deleteNoteData){
+    $.ajax({
+      method: "DELETE",
+      url: "api/notes/" + deleteNoteData.id
+      
+    }).then(function(){
+      location.reload();
+    })
+
+  }
+
+
   function updateNotes(editNoteData){
     $.ajax({
       method: "PUT",
