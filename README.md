@@ -119,8 +119,8 @@ in the browser
 
 ## Photos
 
-![DeployedPhoto](public\assets\login screen.jpg)
-![DeployedPhoto](public\assets\main page.jpg)
+![DeployedPhoto](https://github.com/daviddugle/medication-tracker/blob/main/public/assets/login%20screen.jpg?raw=true)
+![DeployedPhoto](https://github.com/daviddugle/medication-tracker/blob/main/public/assets/main%20page.jpg?raw=true)
 
 
 
@@ -129,8 +129,10 @@ in the browser
 
 ## Video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
-" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=02Rq8wEl3mE
+" target="_blank"><img src="http://img.youtube.com/vi/02Rq8wEl3mE/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+
 
 
