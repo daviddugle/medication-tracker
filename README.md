@@ -65,14 +65,14 @@ My Mother and Father in Laws are both suffering from Alzheimers so my Wife and h
 
 
 
-## Installation Instructions
+## Installation
 
 Once deployed you could just visit the website create a login and go to town. Right now, I only have pictures of my In-Laws populating when they log in.
 
 
 
 
-## Technologies Used
+## Technologies
 
 * Bootstrap
 * Handlebars
