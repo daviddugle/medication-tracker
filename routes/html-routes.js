@@ -9,7 +9,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
     if (!req.user) {
-     return res.render("/login");
+     return res.redirect("/login");
     }
     res.redirect("/member");
   });
