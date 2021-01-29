@@ -21,7 +21,7 @@ module.exports = function(app) {
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-     return res.redirect("/member");
+     return res.return("/member");
     }
     res.render("login");
   });
